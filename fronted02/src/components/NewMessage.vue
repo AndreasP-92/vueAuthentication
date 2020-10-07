@@ -1,50 +1,43 @@
 <template>
-  <v-form>
-    <v-container>
-        <v-layout>
+  <v-flex sm8 offset-sm2>
+    <v-card>
+      <v-toolbar dark>
+        <v-toolbar-title>New Message</v-toolbar-title>
+      </v-toolbar>
+      <v-form>
+        <v-container>
+          <v-layout>
             <v-flex xs12 md4>
-                <v-text-field
-                    label="Message"
-                    required
-                ></v-text-field>
-  
-
+              <v-text-field v-model="messageBody" label="Message" required></v-text-field>
             </v-flex>
-        </v-layout>
-        <v-btn @click="">submit</v-btn>
-    </v-container>
-  </v-form>
+          </v-layout>
+        </v-container>
+        <v-btn @click="submit">submit</v-btn>
+      </v-form>
+    </v-card>
+  </v-flex>
 </template>
+
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
-      messages: ["hello", "hi", "its working"]
+      messageBody: ""
     };
   },
-  async created(){
-    const urlMessages = ('http://localhost:3000/messages')
-    this.messages = (await axios.get(urlMessages)).data;
+  methods: {
+    async submit() {
+      try {
+
+
+        this.$store.dispatch('newMessage',this.messageBody)
+        
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 };
-</script>
-<script>
-  export default {
-    data: () => ({
-      valid: false,
-      firstname: '',
-      lastname: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-    }),
-  }
 </script>

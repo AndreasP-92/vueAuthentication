@@ -1,13 +1,20 @@
 <template>
   <v-app>
     <v-toolbar app>
-
+      <v-btn flat>Messages</v-btn>
+      <v-btn flat to="/NewMessage">New Message</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn flat>Login</v-btn>
     </v-toolbar>
-
-    <v-content>
-      <NewMessage/>
       <br>
-      <Messages/>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <router-view />
+    <v-content>
+
     </v-content>
   </v-app>
 </template>
@@ -28,3 +35,7 @@ export default {
   }
 }
 </script>
+      // <br>
+      // <NewMessage/>
+      // <br>
+      // <Messages/>

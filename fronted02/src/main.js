@@ -6,7 +6,7 @@ import Vuetify from 'vuetify'
 
 
 import Messages from './components/Messages'
-import NewMessages from './components/NewMessages'
+import NewMessage from './components/NewMessage'
 import VueRouter from 'vue-router'
 
 Vue.use(Vuetify)
@@ -14,7 +14,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: Messages},
-  { path: '/NewMessage', component: Messages}
+  { path: '/NewMessage', component: NewMessage}
 ]
 
 const router = new VueRouter ({routes})
